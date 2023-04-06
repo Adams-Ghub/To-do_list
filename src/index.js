@@ -25,31 +25,24 @@ const TASKS = [
 ];
 
 const todoList = document.querySelector('.todo-list');
-const todoTitleBox = document.createElement('div');
+
 const refresh = document.createElement('img');
-const title = document.createElement('p');
 const input = document.createElement('input');
 const divone = document.createElement('div');
 const divtwo = document.createElement('div');
 const clear = document.createElement('a');
 const submit = document.createElement('img');
 
-title.innerText = "Today's To Do";
-title.classList.add('title-text');
 input.type = 'text';
 input.placeholder = 'Add your list...';
 input.classList.add('task-input');
 refresh.classList.add('refresh-icn');
-todoTitleBox.classList.add('title-ref-box');
-todoTitleBox.appendChild(title);
-todoTitleBox.appendChild(refresh);
 divone.classList.add('task-input-box');
 clear.innerText = 'Clear all completed';
 submit.classList.add('add-todo-btn');
 divtwo.classList.add('clear-btn-box');
 divone.appendChild(input);
 divone.appendChild(submit);
-todoList.appendChild(todoTitleBox);
 todoList.appendChild(divone);
 divtwo.appendChild(clear);
 
