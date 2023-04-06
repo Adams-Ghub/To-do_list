@@ -1,5 +1,5 @@
-// import _ from 'lodash';
-// import './style.css';
+import _ from 'lodash';
+import './style.css';
 
 const TASKS = [
   {
