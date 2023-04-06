@@ -17,6 +17,16 @@
   border-style: none;
   outline: none;
   font-style: italic;
+  width: 100%;
+}
+
+.list-input {
+  border-style: none;
+  outline: none;
+  font-family: system-ui, sans-serif;
+  background-color: transparent;
+  font-size: 1.8vw;
+  color: black;
 }
 
 .task-input-box {

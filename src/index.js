@@ -1,73 +1,64 @@
 import _ from 'lodash';
 import './style.css';
+import TodoList from './modules/Todolist';
+import domElements from './modules/domElements';
 
-const TASKS = [
-  {
-    description: 'Task one',
-    complete: true,
-    index: 0,
-  },
-  {
-    description: 'Task two',
-    complete: true,
-    index: 1,
-  },
-  {
-    description: 'Task three',
-    complete: true,
-    index: 2,
-  },
-  {
-    description: 'Task four',
-    complete: true,
-    index: 3,
-  },
-];
 
-const todoList = document.querySelector('.todo-list');
+const Todo = new TodoList()
 
-const refresh = document.createElement('img');
-const input = document.createElement('input');
-const divone = document.createElement('div');
-const divtwo = document.createElement('div');
-const clear = document.createElement('a');
-const submit = document.createElement('img');
-
-input.type = 'text';
-input.placeholder = 'Add your list...';
-input.classList.add('task-input');
-refresh.classList.add('refresh-icn');
-divone.classList.add('task-input-box');
-clear.innerText = 'Clear all completed';
-submit.classList.add('add-todo-btn');
-divtwo.classList.add('clear-btn-box');
-divone.appendChild(input);
-divone.appendChild(submit);
-todoList.appendChild(divone);
-divtwo.appendChild(clear);
+domElements.input.type = 'text';
+domElements.input.placeholder = 'Add your list...';
+domElements.input.classList.add('task-input');
+domElements.refresh.classList.add('refresh-icn');
+domElements.divone.classList.add('task-input-box');
+domElements.clear.innerText = 'Clear all completed';
+domElements.submit.classList.add('add-todo-btn');
+domElements.divtwo.classList.add('clear-btn-box');
+domElements.divone.appendChild(domElements.input);
+domElements.divone.appendChild(domElements.submit);
+domElements.todoList.appendChild(domElements.divone);
+domElements.divtwo.appendChild(domElements.clear);
 
 const showTodo = () => {
-  for (let i = 0; i < TASKS.length; i++) {
+  for (let i = 0; i < Todo.tasks.length; i++) {
     const div = document.createElement('div');
-    const label = document.createElement('label');
+    const listInput = document.createElement('input');
     const checkbox = document.createElement('input');
     const li = document.createElement('li');
     const menu = document.createElement('img');
     menu.classList.add('list-menu-icn');
     li.classList.add('list-item');
     checkbox.type = 'checkbox';
-    checkbox.id = TASKS[i].index;
-    label.for = TASKS[i].index;
+    checkbox.id = Todo.tasks[i].index;
 
-    label.innerText = TASKS[i].description;
+    listInput.value = Todo.tasks[i].description;
+    listInput.classList.add('list-input')
+    listInput.disabled = true;
     div.appendChild(checkbox);
-    div.appendChild(label);
+    div.appendChild(listInput);
     li.appendChild(div);
     li.appendChild(menu);
-    todoList.appendChild(li);
+    domElements.todoList.appendChild(li);
   }
-  todoList.appendChild(divtwo);
+  domElements.todoList.appendChild(domElements.divtwo);
 };
+
+domElements.submit.addEventListener('click', () => {
+  let index = 1;
+  if (Todo.tasks.length > 0) {
+    index = Todo.tasks.length + 1;
+  }
+  let info = { description: domElements.input.value, completed: false, index };
+  Todo.addTask(info);
+  window.location.reload()
+})
+
+domElements.input.addEventListener('keypress', (e) => {
+  if (e.key === "Enter") {
+    domElements.submit.click();
+  }
+
+})
 
 window.addEventListener('load', () => {
   showTodo();
