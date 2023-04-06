@@ -22,23 +22,55 @@ domElements.divtwo.appendChild(domElements.clear);
 const showTodo = () => {
   for (let i = 0; i < Todo.tasks.length; i++) {
     const div = document.createElement('div');
-    const listInput = document.createElement('input');
+    const listInput = document.createElement('label');
     const checkbox = document.createElement('input');
     const li = document.createElement('li');
     const menu = document.createElement('img');
+    const del = document.createElement('img');
+    del.classList.add('del-icon');
+    del.classList.add("hide");
     menu.classList.add('list-menu-icn');
     li.classList.add('list-item');
     checkbox.type = 'checkbox';
-    checkbox.id = Todo.tasks[i].index;
 
-    listInput.value = Todo.tasks[i].description;
+    listInput.innerText = Todo.tasks[i].description;
     listInput.classList.add('list-input')
-    listInput.disabled = true;
+    listInput.id = Todo.tasks[i].index;
+    listInput.setAttribute('contentEditable', 'true');
+    listInput.setAttribute('disabled', 'true')
+    div.classList.add('check-input-box');
     div.appendChild(checkbox);
+
+    listInput.addEventListener('click', (e) => {
+      let id = e.target.id;
+      let select = document.getElementById(id);
+      select.setAttribute('disabled', 'false');
+      Todo.updateList(id);
+      select.parentElement.parentElement.classList.add('active')
+
+    });
+
+
+
+
+
+    // listInput.addEventListener('focus', (e) => {
+    //   let id = e.target.id;
+    //   let delIcn = document.getElementsByClassName('del-icon');
+    //   // let menu = document.getElementsByClassName();
+    //   let select = document.getElementById(id);
+    //   select.parentElement.parentElement.classList.add('active');
+    //   delIcn.classList.add('hide')
+
+    // })
+
     div.appendChild(listInput);
     li.appendChild(div);
     li.appendChild(menu);
+    li.appendChild(del)
     domElements.todoList.appendChild(li);
+
+
   }
   domElements.todoList.appendChild(domElements.divtwo);
 };
@@ -57,9 +89,13 @@ domElements.input.addEventListener('keypress', (e) => {
   if (e.key === "Enter") {
     domElements.submit.click();
   }
-
 })
 
 window.addEventListener('load', () => {
   showTodo();
 });
+
+const input = document.querySelectorAll('.list-input');
+
+
+
