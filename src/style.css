@@ -15,6 +15,20 @@
   background-color: rgb(231, 231, 159);
 }
 
+.complete {
+  text-decoration: line-through;
+}
+
+.clear-btn {
+  text-decoration: none;
+  color: #6b6b6b;
+}
+
+.clear-btn:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
 .del-icon {
   content: url("./images/delete.png");
   width: 1.5vw;
@@ -44,9 +58,10 @@
   outline: none;
   font-family: system-ui, sans-serif;
   background-color: transparent;
-  font-size: 1.8vw;
+  font-size: 1.5vw;
   color: black;
   width: 100%;
+  margin-left: 1vw;
 }
 
 .check-input-box {

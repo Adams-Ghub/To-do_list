@@ -1,4 +1,5 @@
 import { delTodo, updateList } from './Functionalities.js';
+import { updateCompleteTodo } from './status.js';
 
 const showTodo = (data, list, divtwo) => {
   for (let i = 0; i < data.length; i++) {
@@ -16,6 +17,12 @@ const showTodo = (data, list, divtwo) => {
     li.classList.add('list-item');
     li.id = `list${data[i].index}`;
     checkbox.type = 'checkbox';
+    checkbox.id = `check${data[i].index}`;
+    checkbox.checked = data[i].completed;
+
+    if (data[i].completed) {
+      listInput.classList.add('complete');
+    }
 
     listInput.innerText = data[i].description;
     listInput.classList.add('list-input');
@@ -48,6 +55,10 @@ const showTodo = (data, list, divtwo) => {
     del.addEventListener('click', (e) => {
       delTodo(data[i].index, data);
       window.location.reload();
+    });
+
+    checkbox.addEventListener('change', (e) => {
+      updateCompleteTodo(data, data[i].index);
     });
 
     div.appendChild(listInput);
