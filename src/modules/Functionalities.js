@@ -24,6 +24,7 @@ export const updateList = (id, tasks) => {
     theElement.parentElement.parentElement.classList.remove('active');
     menu.classList.remove('hide');
     del.classList.add('hide');
+    id=id*1;
     if (info === '') {
       const filtered = data.filter((proj) => proj.index !== id);
       for (let i = 0; i < filtered.length; i++) {
