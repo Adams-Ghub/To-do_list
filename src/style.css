@@ -2,9 +2,28 @@
   font-family: system-ui;
 }
 
+.hide {
+  display: none;
+}
+
 .todo-list {
   margin: 5vw 15vw;
   box-shadow: 0.3vw 0.3vw 1.5vw grey;
+}
+
+.active {
+  background-color: rgb(231, 231, 159);
+}
+
+.del-icon {
+  content: url("./images/delete.png");
+  width: 1.5vw;
+  height: 1.5vw;
+  opacity: 0.5;
+}
+
+.del-icon:hover {
+  opacity: 0.9;
 }
 
 .title-text {
@@ -17,6 +36,23 @@
   border-style: none;
   outline: none;
   font-style: italic;
+  width: 100%;
+}
+
+.list-input {
+  border-style: none;
+  outline: none;
+  font-family: system-ui, sans-serif;
+  background-color: transparent;
+  font-size: 1.8vw;
+  color: black;
+  width: 100%;
+}
+
+.check-input-box {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .task-input-box {

@@ -1,74 +1,36 @@
 import _ from 'lodash';
 import './style.css';
+import { addTask } from './modules/Functionalities.js';
+import showTodo from './modules/showTodo.js';
+import domElements from './modules/domElements.js';
 
-const TASKS = [
-  {
-    description: 'Task one',
-    complete: true,
-    index: 0,
-  },
-  {
-    description: 'Task two',
-    complete: true,
-    index: 1,
-  },
-  {
-    description: 'Task three',
-    complete: true,
-    index: 2,
-  },
-  {
-    description: 'Task four',
-    complete: true,
-    index: 3,
-  },
-];
+domElements.input.type = 'text';
+domElements.input.placeholder = 'Add your list...';
+domElements.input.classList.add('task-input');
+domElements.refresh.classList.add('refresh-icn');
+domElements.divone.classList.add('task-input-box');
+domElements.clear.innerText = 'Clear all completed';
+domElements.submit.classList.add('add-todo-btn');
+domElements.divtwo.classList.add('clear-btn-box');
+domElements.divone.appendChild(domElements.input);
+domElements.divone.appendChild(domElements.submit);
+domElements.todoList.appendChild(domElements.divone);
+domElements.divtwo.appendChild(domElements.clear);
 
-const todoList = document.querySelector('.todo-list');
+const DATA = JSON.parse(localStorage.getItem('tasks')) || [];
 
-const refresh = document.createElement('img');
-const input = document.createElement('input');
-const divone = document.createElement('div');
-const divtwo = document.createElement('div');
-const clear = document.createElement('a');
-const submit = document.createElement('img');
+domElements.submit.addEventListener('click', () => {
+  addTask(DATA, domElements.input.value);
+  domElements.input.value = '';
+  window.location.reload();
+});
 
-input.type = 'text';
-input.placeholder = 'Add your list...';
-input.classList.add('task-input');
-refresh.classList.add('refresh-icn');
-divone.classList.add('task-input-box');
-clear.innerText = 'Clear all completed';
-submit.classList.add('add-todo-btn');
-divtwo.classList.add('clear-btn-box');
-divone.appendChild(input);
-divone.appendChild(submit);
-todoList.appendChild(divone);
-divtwo.appendChild(clear);
-
-const showTodo = () => {
-  for (let i = 0; i < TASKS.length; i++) {
-    const div = document.createElement('div');
-    const label = document.createElement('label');
-    const checkbox = document.createElement('input');
-    const li = document.createElement('li');
-    const menu = document.createElement('img');
-    menu.classList.add('list-menu-icn');
-    li.classList.add('list-item');
-    checkbox.type = 'checkbox';
-    checkbox.id = TASKS[i].index;
-    label.for = TASKS[i].index;
-
-    label.innerText = TASKS[i].description;
-    div.appendChild(checkbox);
-    div.appendChild(label);
-    li.appendChild(div);
-    li.appendChild(menu);
-    todoList.appendChild(li);
+domElements.input.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    domElements.submit.click();
   }
-  todoList.appendChild(divtwo);
-};
+});
 
 window.addEventListener('load', () => {
-  showTodo();
+  showTodo(DATA, domElements.todoList, domElements.divtwo);
 });
