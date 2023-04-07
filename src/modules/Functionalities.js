@@ -22,8 +22,7 @@ export const updateList = (id, tasks) => {
 
   theElement.addEventListener('blur', () => {
     theElement.parentElement.parentElement.classList.remove('active');
-    menu.classList.remove('hide');
-    del.classList.add('hide');
+
     id *= 1;
     if (info === '') {
       const filtered = data.filter((proj) => proj.index !== id);
@@ -36,9 +35,11 @@ export const updateList = (id, tasks) => {
   });
 };
 
-export const replaceBtn = (find, replace) => {
-  const substitute = document.querySelector(replace);
-  const out = document.querySelector(find);
-  out.classList.add('hide');
-  substitute.classList.remove('hide');
+export const delTodo = (id, data) => {
+  const target = document.getElementById(`del${id}`);
+  const filtered = data.filter((todo) => todo.index !== id);
+  for (let i = 0; i < filtered.length; i++) {
+    filtered[i].index = i + 1;
+  }
+  localStorage.setItem('tasks', JSON.stringify(filtered));
 };

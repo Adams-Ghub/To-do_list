@@ -21,6 +21,7 @@ const DATA = JSON.parse(localStorage.getItem('tasks')) || [];
 
 domElements.submit.addEventListener('click', () => {
   addTask(DATA, domElements.input.value);
+  domElements.input.value = '';
   window.location.reload();
 });
 

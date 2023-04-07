@@ -1,4 +1,4 @@
-import { replaceBtn, updateList } from './Functionalities.js';
+import { delTodo, updateList } from './Functionalities.js';
 
 const showTodo = (data, list, divtwo) => {
   for (let i = 0; i < data.length; i++) {
@@ -14,6 +14,7 @@ const showTodo = (data, list, divtwo) => {
     menu.classList.add('list-menu-icn');
     menu.id = `menu${data[i].index}`;
     li.classList.add('list-item');
+    li.id = `list${data[i].index}`;
     checkbox.type = 'checkbox';
 
     listInput.innerText = data[i].description;
@@ -24,13 +25,29 @@ const showTodo = (data, list, divtwo) => {
     div.classList.add('check-input-box');
     div.appendChild(checkbox);
 
-    listInput.addEventListener('click', (e) => {
+    listInput.addEventListener('mouseover', (e) => {
       const { id } = e.target;
+      const theMenu = document.querySelector(`#menu${id}`);
+      const theDel = document.querySelector(`#del${id}`);
       const select = document.getElementById(id);
       select.setAttribute('disabled', 'false');
       updateList(id, data);
       select.parentElement.parentElement.classList.add('active');
-      replaceBtn(`#menu${id}`, `#del${id}`);
+      theMenu.classList.add('hide');
+      theDel.classList.remove('hide');
+    });
+
+    li.addEventListener('mouseleave', (e) => {
+      const theli = e.target;
+      theli.classList.remove('active');
+      const { children } = theli;
+      children[1].classList.remove('hide');
+      children[2].classList.add('hide');
+    });
+
+    del.addEventListener('click', (e) => {
+      delTodo(data[i].index, data);
+      window.location.reload();
     });
 
     div.appendChild(listInput);
