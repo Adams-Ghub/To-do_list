@@ -22,6 +22,10 @@
   opacity: 0.5;
 }
 
+.del-icon:hover {
+  opacity: 0.9;
+}
+
 .title-text {
   align-self: center;
   font-family: sans-serif;
