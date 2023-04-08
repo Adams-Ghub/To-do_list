@@ -50,7 +50,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](#)
+- [Live Demo Link](https://adams-ghub.github.io/To-do_list/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
