@@ -1,9 +1,10 @@
 import _ from 'lodash';
 import './style.css';
-const { addTask } = require('./modules/Functionalities.js')
 import showTodo from './modules/showTodo.js';
 import domElements from './modules/domElements.js';
 import { clearCompleted } from './modules/status.js';
+
+const { addTask } = require('./modules/Functionalities.js');
 
 domElements.input.type = 'text';
 domElements.input.placeholder = 'Add your list...';
