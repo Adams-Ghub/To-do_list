@@ -41,4 +41,4 @@ const delTodo = (id, data) => {
   localStorage.setItem('tasks', JSON.stringify(filtered));
 };
 
-module.exports = { addTask, delTodo }
+module.exports = { addTask, delTodo };
