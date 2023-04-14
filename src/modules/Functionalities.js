@@ -1,4 +1,4 @@
-export const addTask = (tasks, description) => {
+const addTask = (tasks, description) => {
   const data = tasks;
   let index = 1;
   if (data.length > 0) {
@@ -9,10 +9,8 @@ export const addTask = (tasks, description) => {
   localStorage.setItem('tasks', JSON.stringify(data));
 };
 
-export const updateList = (id, tasks) => {
+const updateList = (id, tasks) => {
   const theElement = document.getElementById(id);
-  const del = document.getElementById(`del${id}`);
-  const menu = document.getElementById(`menu${id}`);
   let info = theElement.textContent;
   const data = tasks;
   theElement.addEventListener('input', (e) => {
@@ -22,7 +20,6 @@ export const updateList = (id, tasks) => {
 
   theElement.addEventListener('blur', () => {
     theElement.parentElement.parentElement.classList.remove('active');
-
     id *= 1;
     if (info === '') {
       const filtered = data.filter((proj) => proj.index !== id);
@@ -35,7 +32,7 @@ export const updateList = (id, tasks) => {
   });
 };
 
-export const delTodo = (id, data) => {
+const delTodo = (id, data) => {
   const target = document.getElementById(`del${id}`);
   const filtered = data.filter((todo) => todo.index !== id);
   for (let i = 0; i < filtered.length; i++) {
@@ -43,3 +40,5 @@ export const delTodo = (id, data) => {
   }
   localStorage.setItem('tasks', JSON.stringify(filtered));
 };
+
+module.exports = { addTask, delTodo }
