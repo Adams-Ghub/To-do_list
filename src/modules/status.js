@@ -1,4 +1,4 @@
-export const updateCompleteTodo = (data, id) => {
+const updateCompleteTodo = (data, id) => {
   const chkbox = document.getElementById(`check${id}`);
   const DATA = data;
   const text = chkbox.nextElementSibling;
@@ -13,7 +13,7 @@ export const updateCompleteTodo = (data, id) => {
   }
 };
 
-export const clearCompleted = (data) => {
+const clearCompleted = (data) => {
   const DATA = data;
   const filtered = DATA.filter((complete) => complete.completed === false);
   for (let i = 0; i < filtered.length; i++) {
@@ -21,3 +21,5 @@ export const clearCompleted = (data) => {
   }
   localStorage.setItem('tasks', JSON.stringify(filtered));
 };
+
+module.exports = { clearCompleted, updateCompleteTodo };

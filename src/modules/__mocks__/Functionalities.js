@@ -19,4 +19,11 @@ const delTodo = (id) => {
   return data.length;
 };
 
-module.exports = { addTask, delTodo };
+const updateList = (id, text) => {
+  const data = [{ description: 'taks 1', completed: false, index: 1 }, { description: 'taks 2', completed: false, index: 2 }];
+  data[id].description = text;
+
+  return data[id].description;
+};
+
+module.exports = { addTask, delTodo, updateList };

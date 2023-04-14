@@ -1,7 +1,9 @@
-const { addTask, delTodo } = require('./Functionalities');
+const { addTask, delTodo, updateList } = require('./Functionalities.js');
+const { clearCompleted, updateCompleteTodo } = require('./status.js');
 
 // Import the function to test
 jest.mock('./Functionalities');
+jest.mock('./status');
 
 describe('test add and remove', () => {
   test('add task', () => {
