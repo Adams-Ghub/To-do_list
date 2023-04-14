@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import './style.css';
-import { addTask } from './modules/Functionalities.js';
+const { addTask } = require('./modules/Functionalities.js')
 import showTodo from './modules/showTodo.js';
 import domElements from './modules/domElements.js';
 import { clearCompleted } from './modules/status.js';
