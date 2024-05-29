@@ -30,7 +30,7 @@
 }
 
 .del-icon {
-  content: url("./images/delete.png");
+  content: url('./images/delete.png');
   width: 1.5vw;
   height: 1.5vw;
   opacity: 0.5;
@@ -86,21 +86,21 @@
 }
 
 .add-todo-btn {
-  content: url("./images/add.png");
+  content: url('./images/add.png');
   width: 1.2vw;
   height: 1.2vw;
   opacity: 0.5;
 }
 
 .list-menu-icn {
-  content: url("./images/menu.png");
+  content: url('./images/menu.png');
   width: 1.5vw;
   height: 1.5vw;
   opacity: 0.5;
 }
 
 .refresh-icn {
-  content: url("./images/refresh.png");
+  content: url('./images/refresh.png');
   width: 1.7vw;
   height: 1.7vw;
   align-self: center;
@@ -120,4 +120,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .refresh-icn {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .list-input {
+    font-size: 1rem;
+  }
+
+  .list-menu-icn {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .del-icon {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .add-todo-btn {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
 }
